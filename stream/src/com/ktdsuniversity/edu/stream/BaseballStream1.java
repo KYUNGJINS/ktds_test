@@ -2,10 +2,10 @@ package com.ktdsuniversity.edu.stream;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BaseballStream1 {
@@ -124,8 +124,9 @@ public class BaseballStream1 {
 										   .sorted()
 										   .collect((Collectors.toList()));
 					 playerNameList2.forEach(System.out::println);
+					 
 
-		// 연습하기
+		// 퀴즈 연습하기
 		list.stream()
 			.filter((vo1) -> vo.getYear().startsWith("200"))
 			.filter((vo1) -> vo.getTeamID().equals("BOS"))
@@ -197,6 +198,23 @@ public class BaseballStream1 {
 			.forEach( vo9 -> {
 				System.out.println(vo.getYear());
 			});
+		
+		list.stream()
+			.filter(vo10 -> vo.getTeamID().startsWith("W"))
+			.map(vo10 -> vo.getYear())
+			.forEach(vo10 -> {
+				System.out.println(vo10);
+			});
+		
+		Optional <String> team = list.stream()
+			.filter(vo11 -> vo.getLgID().equals("AL"))
+			.filter(vo11 -> vo.getGameID().endsWith("60"))
+			.filter(vo11 -> vo.getTeamID().equals("DET"))
+			.filter(vo11 -> vo.getPlayerID().startsWith("f"))
+			.map(vo11 -> vo.getPlayerID())
+			.findFirst();
+		
+			System.out.print(team.orElse("없음"));
 			
 	}
 }
