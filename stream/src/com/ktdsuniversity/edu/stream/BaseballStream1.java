@@ -66,7 +66,7 @@ public class BaseballStream1 {
 
 		System.out.println("--------------------------------------------------");
 
-		// 연도에 관계없이 이름이 'f'로 시작하는 모든 데이터를 추출하는 코드
+		// 연도에 관계없이 이름이 'F'로 시작하는 모든 데이터를 추출하는 코드
 		list.stream()
 			.filter((allStarVO) -> allStarVO.getPlayerID()
 			.toUpperCase()
@@ -146,7 +146,57 @@ public class BaseballStream1 {
 			.forEach((vo3) -> {
 				vo.getPlayerID();
 			});
-
+		
+		// 연도에 관계없이 이름이 'f'로 시작하는 모든 데이터를 추출하는 코드
+		list.stream()
+			.filter((vo4) -> vo.getPlayerID()
+			.toUpperCase()
+			.startsWith("f"))
+			.forEach((vo4) -> {
+				System.out.println(vo.getPlayerID());
+			});
+		
+		// GP값이 0이면서 TeamID가 NYA이어야하고 playerID에 FO가 포함되어 있는 값을 출력하는 코드
+		list.stream()
+			.filter(vo5 -> vo.getGp() == 0)
+			.filter(vo5 -> vo.getTeamID().equals("NYA"))
+			.filter(vo5 -> vo.getPlayerID().toUpperCase().contains("F0"))
+			.forEach(vo5 ->{
+				System.out.println(vo.getPlayerID());
+			});
+		
+		// startingPos가 '4'인 데이터들의 playerID만 가지고와서 playerID만 추출하는 코드
+		// 중복을 제거하고 정렬까지 해서 출력해보기
+		List allStarFullVO = list.stream()
+			.filter(vo6 -> vo.getStartingPos() == 4)
+			.map(vo6 -> vo.getPlayerID())
+			.distinct()
+			.sorted()
+			.collect(Collectors.toList());
+				allStarFullVO.forEach(System.out::println);
+			
+		// 2004년도 경기에서 팀 명이 'Tex'인 것만 골라내는 코드
+		list.stream()
+			.filter(vo7 -> vo.getYear().equals("2004"))
+			.filter(vo7 -> vo.getTeamID().equals("TEX"))
+			.forEach(vo7 -> {
+				System.out.println(vo.getTeamID());
+			});
+		
+		list.stream()
+			.filter(vo8 -> vo.getPlayerID().startsWith("foxx"))
+			.map(vo8 -> vo.getYear())
+			.distinct()
+			.forEach(vo8 -> {
+				System.out.println(vo.getYear());
+			});
+	
+		list.stream()
+			.filter( vo10 -> vo.getTeamID().equals("ALT"))
+			.map( vo9 -> vo.getYear() )
+			.forEach( vo9 -> {
+				System.out.println(vo.getYear());
+			});
+			
 	}
-
 }
