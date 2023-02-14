@@ -1,5 +1,11 @@
 package com.ktdsuniversity.edu.infext;
 
-public interface VIPMemberService {
+public interface VIPMemberService extends MemberService {
 
+	/**
+	 * 포인트 지급
+	 * @param point 지급될 포인트
+	 */
+	public void addPoint(int point);
+	
 }
