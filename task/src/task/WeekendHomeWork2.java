@@ -29,26 +29,24 @@ public class WeekendHomeWork2 {
 
 			if (list.get(i) >= max) {
 				max = list.get(i);
-				System.out.println("최대값은 " + max + "입니다.");
 			}
 
 			if (list.get(i) <= min) {
 				min = list.get(i);
-				System.out.println("최소값은 " + min + "입니다.");
 			}
 		}
+		System.out.println("최대값은 " + max + "입니다.");
+		System.out.println("최소값은 " + min + "입니다.");
 
 //		3. 랜덤 숫자 50개를 List에 넣고 그 중 평균 값(정수형)과 같은 숫자 하나를 출력한다. 없으면 0 을 출력한다.
 		int sum = 0;
 
-		for (int i = 0; i < 50; i++) {
-			int randomNumber = random.nextInt(50) + 1;
-			list.add(randomNumber);
+		for (int i = 0; i < list.size(); i++) {
 			sum += list.get(i);
 		}
 
 		int avg = sum / list.size();
-		if (avg / 2 != 0) {
+		if (list.contains(avg)) {
 			System.out.println("평균값은 " + avg + "입니다.");
 		} else {
 			System.out.println("0");
