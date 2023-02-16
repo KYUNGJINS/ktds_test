@@ -20,7 +20,13 @@ public class NullPointerExceptionTest {
 	
 	// null체크하는 코드를 만들어놓고 사용
 	public static String nullToDefault(String string, String defaultValue) {
-		return string == null ? defaultValue : string;
+		if(string == null) {
+			return defaultValue;
+		}
+		else {
+			return string;
+		}
+//		위와 같은 코드 return string == null ? defaultValue : string;
 	}
 	
 	public static String nullToEmpty(String string) {
@@ -33,10 +39,10 @@ public class NullPointerExceptionTest {
 //		if (name == null) {
 //			name = "";
 //		}
-
+		String string = null;
 		boolean isAStart = name.startsWith("A");
 		System.out.println(isAStart);
-
+		String str =nullToDefault(string,"dhaha");
 		Map<String, String> nameMap = new HashMap<>();
 		nameMap.put("김", "김둘리");
 		nameMap.put("이", "이둘리");
